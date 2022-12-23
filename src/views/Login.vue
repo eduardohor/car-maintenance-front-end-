@@ -19,6 +19,11 @@
 
 </template>
 
+<script>
+
+
+</script>
+
 <style>
 .form-signin {
   max-width: 330px;
