@@ -55,11 +55,10 @@ export default {
       this.validate = reactive({})
 
       try {
-        const { data } = await axiosInstance.post('register', payload)
-        console.log(data);
+        await axiosInstance.post('register', payload)
+        this.$router.push('/login')
       } catch (error) {
         Object.assign(this.validate, error.response.data['errors'])
-        console.log(this.validate)
       }
     }
   }
