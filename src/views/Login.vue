@@ -27,6 +27,7 @@
 <script>
 import { axiosInstance } from '../services/http'
 import { reactive } from 'vue'
+import Cookie from 'js-cookie'
 
 export default {
   name: 'Login',
@@ -50,6 +51,8 @@ export default {
 
       try {
         const { data } = await axiosInstance.post('login', payload)
+        Cookie.set('_myapp_token', data.access_token)
+        this.$router.push('/')
       } catch (error) {
         Object.assign(this.validate, error.response.data);
 
