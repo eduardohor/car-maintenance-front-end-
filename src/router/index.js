@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
+import VehiclesIndex from '../views/VehiclesIndex.vue'
+
 import Guard from '../services/middleware'
 
 
@@ -23,6 +25,11 @@ const router = createRouter({
       path: '/register',
       name: 'register',
       component: Register
+    },
+    {
+      path: '/vehicles',
+      name: 'vehicles',
+      component: VehiclesIndex
     }
   ]
 })

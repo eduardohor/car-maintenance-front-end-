@@ -9,7 +9,9 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="navbar-nav me-auto">
           <router-link to="/" class="nav-link active">Home</router-link>
+          <router-link to="/vehicles" class="nav-link active">Veículos</router-link>
         </div>
+        
 
         <div class="d-flex">
           <ul class="navbar-nav me-auto mb-2 mb-md-0">
