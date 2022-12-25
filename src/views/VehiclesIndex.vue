@@ -10,6 +10,7 @@
           <th scope="col">Modelo</th>
           <th scope="col">Versão</th>
           <th scope="col">Placa</th>
+          <th scope="col">Ações</th>
         </tr>
       </thead>
       <tbody>
@@ -19,6 +20,12 @@
           <td>{{vehicle.model}}</td>
           <td>{{vehicle.version}}</td>
           <td>{{vehicle.plate}}</td>
+          <td class="d-flex">
+            <router-link :to="{name: 'vehicles-edit', params: {id: vehicle.id}}"  class="btn btn-warning">Editar</router-link>
+            <form action="">
+              <button class="btn btn-danger">Excluir</button>
+            </form>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -61,3 +68,9 @@ export default {
 }
 
 </script>
+
+<style>
+.btn-warning{
+margin-right: 8px;
+}
+</style>
