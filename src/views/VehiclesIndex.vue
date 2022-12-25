@@ -22,7 +22,7 @@
           <td>{{vehicle.plate}}</td>
           <td class="d-flex">
             <router-link :to="{name: 'vehicles-edit', params: {id: vehicle.id}}"  class="btn btn-warning">Editar</router-link>
-            <form action="">
+            <form @submit.prevent="deleta(vehicle.id)">
               <button class="btn btn-danger">Excluir</button>
             </form>
           </td>
@@ -62,7 +62,15 @@ export default {
   },
 
   methods: {
+    async deleta(id){
 
+      try {
+        const {data} = await axiosInstanceWithToken.delete(`vehicles/${id}`)
+      } catch (error) {
+        console.log(error)
+      }
+
+    }
   }
 
 }
