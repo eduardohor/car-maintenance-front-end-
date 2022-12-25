@@ -1,7 +1,7 @@
 <template>
   <main class="container">
-    <h1 class="mt-3">Veículos</h1>
-    <button class="btn btn-success">Adicionar Veículo</button>
+    <h1 class="mt-3">Seus Veículos</h1>
+    <router-link to="/vehicles/create" class="btn btn-success">Adicionar Veículo</router-link>
     <table class="table mt-4">
       <thead>
         <tr>
