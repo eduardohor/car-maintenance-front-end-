@@ -5,7 +5,7 @@
   <main class="container">
     <h1 class="mt-3">Seja Bem-vindo!</h1>
     <h3>- Suas manutenções previstas</h3>
-    <button class="btn btn-success">Adicionar manutenção</button>
+    <router-link to="/maintenance/create" class="btn btn-success">Adicionar manutenção</router-link>
     <table class="table mt-4">
       <thead>
         <tr>

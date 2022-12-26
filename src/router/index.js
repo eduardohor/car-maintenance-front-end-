@@ -5,6 +5,7 @@ import Register from '../views/Register.vue'
 import VehiclesIndex from '../views/VehiclesIndex.vue'
 import VehiclesCreate from '../views/VehiclesCreate.vue'
 import VehiclesEdit from '../views/VehiclesEdit.vue'
+import MaintenanceCreate from '../views/MaintenanceCreate.vue'
 
 import Guard from '../services/middleware'
 
@@ -47,6 +48,13 @@ const router = createRouter({
       name: 'vehicles-edit',
       component: VehiclesEdit,
       beforeEnter: Guard.auth
+    },
+    {
+      path: '/maintenance/create',
+      name: 'maintenance-create',
+      component: MaintenanceCreate,
+      beforeEnter: Guard.auth
+
     }
   ]
 })

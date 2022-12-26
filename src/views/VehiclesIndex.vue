@@ -15,16 +15,17 @@
       </thead>
       <tbody>
         <tr v-for="vehicle of vehicles" :key="vehicle.id">
-          <th scope="row">{{ vehicle.id}}</th>
-          <td>{{vehicle.brand}}</td>
-          <td>{{vehicle.model}}</td>
-          <td>{{vehicle.version}}</td>
-          <td>{{vehicle.plate}}</td>
+          <th scope="row">{{ vehicle.id }}</th>
+          <td>{{ vehicle.brand }}</td>
+          <td>{{ vehicle.model }}</td>
+          <td>{{ vehicle.version }}</td>
+          <td>{{ vehicle.plate }}</td>
           <td class="d-flex">
-            <router-link :to="{name: 'vehicles-edit', params: {id: vehicle.id}}"  class="btn btn-warning">Editar</router-link>
-            <form @submit.prevent="deleta(vehicle.id)">
-              <button class="btn btn-danger">Excluir</button>
-            </form>
+            <router-link :to="{ name: 'vehicles-edit', params: { id: vehicle.id } }"
+              class="btn btn-warning">Editar</router-link>
+
+            <button v-on:click="deleta(vehicle.id)" class="btn btn-danger">Excluir</button>
+
           </td>
         </tr>
       </tbody>
@@ -34,7 +35,7 @@
 </template>
 
 <script>
-import {axiosInstanceWithToken} from '../services/http'
+import { axiosInstanceWithToken } from '../services/http'
 
 export default {
   name: 'VehiclesIndex',
@@ -50,22 +51,29 @@ export default {
     }
   },
 
-  async mounted() {
-    try {
-      const {data} = await axiosInstanceWithToken.get('vehicles')
-      this.vehicles = data
-      console.log(data)
-    } catch (error) {
-
-    }
+  created() {
+    this.listVehicles()
 
   },
 
   methods: {
-    async deleta(id){
+    async listVehicles() {
+      try {
+        const { data } = await axiosInstanceWithToken.get('vehicles')
+        this.vehicles = data
+      } catch (error) {
+        console.log(error)
+      }
+    },
+
+    async deleta(id) {
 
       try {
-        const {data} = await axiosInstanceWithToken.delete(`vehicles/${id}`)
+        if (confirm("Confirmar a exclusão? ")) {
+          const { data } = await axiosInstanceWithToken.delete(`vehicles/${id}`)
+          this.listVehicles()
+
+        }
       } catch (error) {
         console.log(error)
       }
@@ -78,7 +86,7 @@ export default {
 </script>
 
 <style>
-.btn-warning{
-margin-right: 8px;
+.btn-warning {
+  margin-right: 8px;
 }
 </style>

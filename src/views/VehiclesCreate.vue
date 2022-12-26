@@ -70,6 +70,10 @@ export default{
 
       try {
         const {data} = await axiosInstanceWithToken.post('/vehicles', payload)
+        this.brand = ''
+        this.model = ''
+        this.version = ''
+        this.plate = ''
         console.log(data)
       } catch (error) {
         console.log(error.response.data['errors'])
